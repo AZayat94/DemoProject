@@ -30,11 +30,14 @@ public class HomePage {
     @Step("Selecting Tv Appliances from Menu")
     public void SelectTvAppliances(){
         ScrollIntoView(Tv_Appliances);
+        WaitUntilVisibility(Tv_Appliances);
         driver.findElement(Tv_Appliances).click();
+        WaitUntilVisibility(Television);
+
     }
     @Step("Selecting Television Section")
     public Televisions SelectTelevisions() {
-        WaitUntilVisibility(Television);
+//        WaitUntilVisibility(Television);
         driver.findElement(Television).click();
         return new Televisions(driver);
     }
@@ -46,7 +49,7 @@ public class HomePage {
 
     public void WaitUntilVisibility(By element){
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(element)));
     }
     @Step("Open Today's Deal Page")
     public void OpenTodayDeal(){

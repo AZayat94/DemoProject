@@ -5,7 +5,6 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import listeners.TestAllureListener;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -39,7 +38,7 @@ public class Tests extends BaseTests {
     public void TestCase2(){
         HomePage.OpenTodayDeal();
         String Header =  HomePage.GetPageHeader();
-        assertEquals(Header,"Today's Deals");
+        Assert.assertEquals(Header,"Today's Deals");
     }
 
     @Test(priority = 3, description = "Verifying Cart Count is not equal zero")
@@ -48,7 +47,7 @@ public class Tests extends BaseTests {
     @Story("Story Name : Cart Count")
     public void TestCase3(){
         int CartCount =  HomePage.GetCartCount();
-        assertEquals(CartCount, 2);
+        Assert.assertEquals(CartCount, 2);
     }
 
 }
