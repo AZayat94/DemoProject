@@ -1,0 +1,4 @@
+Tests\Tests.class
+listeners\TestAllureListener.class
+Base\BaseTests.class
+Config\ConfigProperties.class
