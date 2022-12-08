@@ -1,6 +1,7 @@
 package Base;
 
 import Config.ConfigProperties;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,8 +12,8 @@ import java.io.IOException;
 import java.time.Duration;
 
 public class BaseTests {
-    private WebDriver driver;
-    protected HomePage HomePage;
+    private static WebDriver driver;
+    protected  HomePage HomePage;
 
 
     @BeforeClass
@@ -20,8 +21,8 @@ public class BaseTests {
         ConfigProperties.InitializePropFile();
         if (ConfigProperties.properties.getProperty("BrowserType").equalsIgnoreCase("Chrome"))
         {
-        //    WebDriverManager.chromedriver().setup();
-         //   driver = new ChromeDriver();
+           // WebDriverManager.chromedriver().setup();
+            //driver = new ChromeDriver();
              driver = new ChromeDriver();
         }
         else if (ConfigProperties.properties.getProperty("BrowserType").equalsIgnoreCase("FireFox"))
@@ -35,10 +36,13 @@ public class BaseTests {
         HomePage = new HomePage(driver);
     }
 
-
+    public static WebDriver getDriver(){
+        return driver;
+    }
     @AfterClass
     public void tearDown(){
         driver.quit();
     }
+
 
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -29,11 +30,13 @@ public class SamsungTvs {
     public void selectFromDropDown(String option) {
         findDropDownElement().selectByVisibleText(option);
     }
+
+    @Step("Sorting from High to Low")
     public void SortHighToLow(String option) {
         WaitUntilPageLoads();
         selectFromDropDown(option);
         }
-
+    @Step("Select the second highest priced Tv")
     public SecondHighestPricedTv GetAllAvailableTvs(){
         List<WebElement> AvailableTvs = driver.findElements(All_Available_Tvs);
         AvailableTvs.get(1).click();

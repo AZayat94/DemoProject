@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -22,16 +23,16 @@ public class HomePage {
     public HomePage(WebDriver driver){
         this.driver = driver;
     }
-
+    @Step("Clicking on Ham menu")
     public void ClickOnHamburgerMenu() {
         driver.findElement(Hamburger_Menu).click();
     }
-
+    @Step("Selecting Tv Appliances from Menu")
     public void SelectTvAppliances(){
         ScrollIntoView(Tv_Appliances);
         driver.findElement(Tv_Appliances).click();
     }
-
+    @Step("Selecting Television Section")
     public Televisions SelectTelevisions() {
         WaitUntilVisibility(Television);
         driver.findElement(Television).click();
@@ -47,12 +48,15 @@ public class HomePage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
+    @Step("Open Today's Deal Page")
     public void OpenTodayDeal(){
         driver.findElement(TodayDealBtn).click();
     }
+    @Step("Getting page header")
     public String GetPageHeader(){
        return driver.findElement(PageHeader).getText();
     }
+    @Step("Getting item count in the cart")
     public int GetCartCount(){
        return Integer.parseInt(driver.findElement(CartCount).getText())  ;
     }
